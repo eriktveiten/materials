@@ -1,0 +1,53 @@
+# Ignore Visual Studio temporary files, build results, and caches
+.vs/
+*.user
+*.suo
+*.cache
+*.log
+*.pdb
+*.opendb
+*.ide
+*.dbmdl
+*.jfm
+
+# Ignore build output
+bin/
+obj/
+[Bb]uild/
+[Ll]og/
+
+# Ignore NuGet packages
+*.nupkg
+*.nuspec
+*.snupkg
+*.nuget.props
+*.nuget.targets
+packages/
+
+# Ignore test results
+TestResult*/
+*.trx
+*.coverage
+*.coveragexml
+
+# Ignore Rider & JetBrains IDE files
+.idea/
+
+# Ignore temp files from OS
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# Ignore Mac OS specific files
+.DS_Store
+
+# Ignore Copilot & other AI caches
+CopilotIndices/
+
+# Ignore publish profiles (if not meant for sharing)
+*.pubxml
+*.pubxml.user
+
+# Ignore generated files from tooling
+*.Generated.cs

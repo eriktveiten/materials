@@ -20,4 +20,39 @@ namespace Materials
 
         public static List<string> ArmeringsListe => Armering.Keys.ToList();
     }
+
+    public struct ArmeringsMaterial
+    {
+
+    
+        private readonly double E_s=200e3;
+        private readonly double Agt;
+        private readonly double Fyk;
+        private readonly double epsilon_yd;
+        public  double Fyd;
+        public ArmeringsMaterial(string label)
+        {
+            if (!ArmeringMainProp.Armering.TryGetValue(label, out var values))
+                throw new ArgumentException($"Invalid concrete class label: {label}");
+            Agt = values.Item1;
+            Fyk = values.Item2;
+            epsilon_yd = values.Item3;
+        }
+        public double GetAgt() => Agt;
+        public double GetFyk() => Fyk;
+        public double GetEud() => epsilon_yd;
+        public void SetFydULS(DesignSituation situation)
+        {
+            var factors = DesignSituationFactors.GetFactors(situation);
+            Fyd= Fyk / factors.GammaC;
+        }
+
+        public double stal_spenningULS(double y)
+        {
+            if (Math.Abs(y) > epsilon_yd)
+                return Math.Sign(y) * Fyd;
+
+            return E_s * y;
+        }
+    }
 }

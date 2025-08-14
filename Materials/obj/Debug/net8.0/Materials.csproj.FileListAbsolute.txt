@@ -9,3 +9,4 @@ C:\Users\ErikT\source\repos\JET\Materials\Materials\obj\Debug\net8.0\Materials.d
 C:\Users\ErikT\source\repos\JET\Materials\Materials\obj\Debug\net8.0\refint\Materials.dll
 C:\Users\ErikT\source\repos\JET\Materials\Materials\obj\Debug\net8.0\Materials.pdb
 C:\Users\ErikT\source\repos\JET\Materials\Materials\obj\Debug\net8.0\ref\Materials.dll
+C:\Users\ErikT\source\repos\JET\Materials\Materials\obj\Debug\net8.0\Materials.sourcelink.json

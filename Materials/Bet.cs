@@ -30,7 +30,7 @@ namespace Materials
 
     }
 
-    public class BetongMaterial
+    public struct BetongMaterial
     {
         private readonly int fck;
         private readonly int fckCube;
@@ -75,11 +75,30 @@ namespace Materials
         public double EpsilonCu3 =>
       Fck <= 50 ? 3.5 / 1000 : (2.6 + 35 * Math.Pow((90 - Fck) / 100, 4)) / 1000;
 
-
-        public double Fcd(DesignSituation situation)
+        public double FcdULS { get; set; }
+        public void SetFcdULS(DesignSituation situation)
         {
             var factors = DesignSituationFactors.GetFactors(situation);
-            return 0.85*Fck / factors.GammaC;
+            FcdULS = 0.85*Fck / factors.GammaC;
+        }
+        public double FcdALS { get; set; }
+
+        public void SetFcALS(DesignSituation situation)
+        {
+            var factors = DesignSituationFactors.GetFactors(situation);
+            FcdALS = 0.85 * Fck / factors.GammaC;
+        }
+
+        public double betong_spenningULS(double eps)
+        {
+            if (eps < 0)
+                return 0.0;
+            
+            if (eps > EpsilonC2)
+                return FcdULS;
+
+            var sigma = FcdULS * (1 - Math.Pow(1 - eps / EpsilonC2, StressStrainExponentN));
+            return sigma;
         }
     }
 
