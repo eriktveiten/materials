@@ -44,15 +44,19 @@ namespace Materials
         public void SetFydULS(DesignSituation situation)
         {
             var factors = DesignSituationFactors.GetFactors(situation);
-            Fyd= Fyk / factors.GammaC;
+            Fyd= Fyk / factors.GammaS;
         }
 
         public double stal_spenningULS(double y)
         {
-            if (Math.Abs(y) > epsilon_yd)
+            if (Math.Abs(E_s * y) > Fyd)
                 return Math.Sign(y) * Fyd;
+            else
+                return E_s * y;
+            //if (Math.Abs(y) > epsilon_yd)
+            //    return Math.Sign(y) * Fyd;
 
-            return E_s * y;
+            //return E_s * y;
         }
     }
 }

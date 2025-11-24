@@ -63,17 +63,17 @@ namespace Materials
             Fck <= 50 ? 2.0 / 1000 : (2 + 0.085 * Math.Pow(Fck - 50, 0.53)) / 1000;
 
         public double EpsilonCu2 =>
-            Fck <= 50 ? 3.5 / 1000 : (2.6 + 35 * Math.Pow((90 - Fck) / 100, 4)) / 1000;
+            Fck <= 50 ? 3.5 / 1000 : (2.6 + 35 * Math.Pow((90 - Fck) / 100.0, 4)) / 1000;
 
-        public double StressStrainExponentN => Fck <= 50 ? 2.0 : 1.4 + 23.4 * Math.Pow((90 - Fck) / 100, 4);
+        public double StressStrainExponentN => Fck <= 50 ? 2.0 : 1.4 + 23.4 * Math.Pow((90 - Fck) / 100.0, 4);
 
 
         public double EpsilonC3 =>
-            Fck <= 50 ? 1.75 / 1000 : (1.75 + 0.55 * ((Fck - 50) / 40)) / 1000;
+            Fck <= 50 ? 1.75 / 1000 : (1.75 + 0.55 * ((Fck - 50) / 40.0)) / 1000;
 
 
         public double EpsilonCu3 =>
-      Fck <= 50 ? 3.5 / 1000 : (2.6 + 35 * Math.Pow((90 - Fck) / 100, 4)) / 1000;
+      Fck <= 50 ? 3.5 / 1000 : (2.6 + 35 * Math.Pow((90 - Fck) / 100.0, 4)) / 1000;
 
         public double FcdULS { get; set; }
         public void SetFcdULS(DesignSituation situation)
