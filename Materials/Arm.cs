@@ -58,5 +58,20 @@ namespace Materials
 
             //return E_s * y;
         }
+
+        public double stal_spenningSLS(double y)
+        {
+            // For SLS, use pure elastic behavior (no yield limit)
+            // Stress is limited by strain compatibility
+            return E_s * y;
+        }
+
+        /// <summary>
+        /// Get stress-strain function based on design situation
+        /// </summary>
+        public Func<double, double> GetStressStrainFunction(DesignSituation situation)
+        {
+            return situation == DesignSituation.SLS ? stal_spenningSLS : stal_spenningULS;
+        }
     }
 }

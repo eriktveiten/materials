@@ -93,12 +93,33 @@ namespace Materials
         {
             if (eps < 0)
                 return 0.0;
-            
+
             if (eps > EpsilonC2)
                 return FcdULS;
 
             var sigma = FcdULS * (1 - Math.Pow(1 - eps / EpsilonC2, StressStrainExponentN));
             return sigma;
+        }
+
+        public double betong_spenningSLS(double eps)
+        {
+            if (eps < 0)
+                return 0.0;
+
+            // For SLS, use elastic-plastic behavior with Ecm
+            // Limit stress to 0.45*fck for long-term loading (EC2 7.2)
+            double sigmaSLS = Ecm * eps;
+            double sigmaMax = 0.45 * Fck; // Long-term stress limit
+
+            return Math.Min(sigmaSLS, sigmaMax);
+        }
+
+        /// <summary>
+        /// Get stress-strain function based on design situation
+        /// </summary>
+        public Func<double, double> GetStressStrainFunction(DesignSituation situation)
+        {
+            return situation == DesignSituation.SLS ? betong_spenningSLS : betong_spenningULS;
         }
     }
 

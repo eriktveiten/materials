@@ -29,6 +29,7 @@ namespace Materials
         public static readonly Dictionary<DesignSituation, PartialSafetyFactors> Factors
             = new Dictionary<DesignSituation, PartialSafetyFactors>
         {
+        { DesignSituation.SLS, new PartialSafetyFactors(1.00, 1.00, 1.00) },
         { DesignSituation.PermanentOrTransient, new PartialSafetyFactors(1.50, 1.15, 1.15) },
         { DesignSituation.Fatigue,              new PartialSafetyFactors(1.50, 1.15, 1.15) },
         { DesignSituation.Accidental,           new PartialSafetyFactors(1.20, 1.00, 1.00) }
@@ -41,6 +42,7 @@ namespace Materials
 
     public enum DesignSituation
     {
+        SLS,
         PermanentOrTransient,
         Fatigue,
         Accidental
