@@ -48,7 +48,7 @@ namespace Materials
         public int FckCube => fckCube;
 
         public double Fcm => Fck + 8;
-        public double Ecm => 22 * Math.Pow(Fcm / 10.0, 0.3); // Example from Eurocode
+        public double Ecm => 22 * Math.Pow(Fcm / 10.0, 0.3)*1e3; // Example from Eurocode
 
         public double Fctm =>
          Fck <= 50 ? 0.3 * Math.Pow(Fck, 2.0 / 3.0) : 2.12 * Math.Log(1 + Fcm / 10.0);
