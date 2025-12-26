@@ -39,6 +39,7 @@ namespace Materials
             epsilon_yd = values.Item3;
         }
         public double GetAgt() => Agt;
+        public double GetEs() => E_s;
         public double GetFyk() => Fyk;
         public double GetEud() => epsilon_yd;
         public void SetFydULS(DesignSituation situation)

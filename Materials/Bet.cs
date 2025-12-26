@@ -66,6 +66,8 @@ namespace Materials
             Fck <= 50 ? 3.5 / 1000 : (2.6 + 35 * Math.Pow((90 - Fck) / 100.0, 4)) / 1000;
 
         public double StressStrainExponentN => Fck <= 50 ? 2.0 : 1.4 + 23.4 * Math.Pow((90 - Fck) / 100.0, 4);
+        public double netta => Fck <= 50 ? 1.0 : 1.0 -(Fck-50)/200;
+        public double lambda => Fck <= 50 ? 0.8 : 0.8 -(Fck-50)/400;
 
 
         public double EpsilonC3 =>
